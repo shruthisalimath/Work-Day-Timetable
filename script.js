@@ -11,48 +11,44 @@ $('#currentDay').text(today.format('MMM D, YYYY'));
 
 
   //Save text area to local storage on save button click
-    $(".saveBtn").click(function(event) {
+    $(".saveBtn").click(function(event) 
+    {
         event.preventDefault();
-    var timeSchedule = $(this).parent(".row").attr("id");
-    var comment = $(this).siblings(".description").val().trim();
+        var timeSchedule = $(this).parent(".row").attr("id");
+        var comment = $(this).siblings(".description").val().trim();
 
-    var daySchedule = localStorage.getItem("daySchedule");
-    if(daySchedule === null){
+        var daySchedule = localStorage.setItem(timeSchedule,comment);
+
+       /* var daySchedule = localStorage.getItem("comment");
+        if(daySchedule === null)
+        {
         daySchedule =[];
-    }
-    else {
+        }
+        else {
         daySchedule =JSON.parse(daySchedule);
         console.log(daySchedule);
-    }
-    daySchedule.push(comment);
-    console.log(daySchedule);
-      var dayScheduleData = JSON.stringify(daySchedule);
-      localStorage.setItem("daySchedule", dayScheduleData);
+        }
+            daySchedule.push(daySchedule);
+             console.log(daySchedule);
+        var dayScheduleData = JSON.stringify(daySchedule);
+        localStorage.setItem("daySchedule", dayScheduleData);*/
+    });
 
-
-
-   /* $("#9AM .description").val(localStorage.getItem("9AM"));
-    $("#10AM .description").val(localStorage.getItem("10AM"));
-    $("#11AM .description").val(localStorage.getItem("11AM"));
-    $("#12PM .description").val(localStorage.getItem("12PM"));
-    $("#1PM .description").val(localStorage.getItem("1PM"));
-    $("#2PM .description").val(localStorage.getItem("2PM"));
-    $("#3PM .description").val(localStorage.getItem("3PM"));
-    $("#4PM .description").val(localStorage.getItem("4PM"));
-    $("#5PM .description").val(localStorage.getItem("5PM"));*/
-
+   
     //set hours
-    function setHours() {
+    function setHours()
+    {
         var now = dayjs().hour();
         //going through each hour
-        $('time-block').each(function() 
+        $(".time-block").each(function() 
         {
             //changing current hour in integer
-            var currentTime = parseInt($(this).attr('id'));
+            var currentTime = parseInt($(this).attr('id').split("hour-")[1]);
             if(currentTime < now)
             {
+                $(this).removeClass('present');
+                $(this).removeClass('future'); 
                 $(this).addClass('past');
-                
                 console.log("past");
             }
             else if(currentTime === now)
@@ -70,8 +66,20 @@ $('#currentDay').text(today.format('MMM D, YYYY'));
             }
         });
     }
+    //get items from local storage
+     $("#hour-9 .description").val(localStorage.getItem("hour-9"));
+    $("#hour-10 .description").val(localStorage.getItem("hour-10"));
+    $("#hour-11 .description").val(localStorage.getItem("hour-11"));
+    $("#hour-12 .description").val(localStorage.getItem("hour-12"));
+    $("#hour-13 .description").val(localStorage.getItem("hour-13"));
+    $("#hour-14 .description").val(localStorage.getItem("hour-14"));
+    $("#hour-15.description").val(localStorage.getItem("hour-15"));
+    $("#hour-16 .description").val(localStorage.getItem("hour-16"));
+    $("#hour-17.description").val(localStorage.getItem("hour-17"));
+
     setHours();
-});
+
+
 
     // TODO: Add a listener for click events on the save button. This code should
     // use the id in the containing time-block as a key to save the user input in
