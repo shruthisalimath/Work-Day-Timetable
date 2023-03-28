@@ -2,10 +2,35 @@
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
 
-var today = dayjs();
-$('#currentDay').text(today.format('MMM D, YYYY'));
 
 $(function () {
+
+    //Display current date in the Header of the page
+    var today = dayjs();
+$('#currentDay').text(today.format('MMM D, YYYY'));
+
+
+  //Save text area to local storage on save button click
+    $(".saveBtn").click(function() {
+    var timeSchedule = $(this).parent(".row").attr("id");
+    var comment = $(this).siblings(".description").val().trim();
+
+    var daySchedule = localStorage.getItem("daySchedule");
+    if(daySchedule === null){
+        daySchedule =[];
+    }
+    else {
+        daySchedule =JSON.parse(daySchedule);
+        console.log(daySchedule);
+    }
+    daySchedule.push(comment);
+    console.log(daySchedule);
+      var dayScheduleData = JSON.stringify(daySchedule);
+      localStorage.setItem("daySchedule", dayScheduleData);
+
+
+});
+
     // TODO: Add a listener for click events on the save button. This code should
     // use the id in the containing time-block as a key to save the user input in
     // local storage. HINT: What does `this` reference in the click listener
