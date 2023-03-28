@@ -11,7 +11,8 @@ $('#currentDay').text(today.format('MMM D, YYYY'));
 
 
   //Save text area to local storage on save button click
-    $(".saveBtn").click(function() {
+    $(".saveBtn").click(function(event) {
+        event.preventDefault();
     var timeSchedule = $(this).parent(".row").attr("id");
     var comment = $(this).siblings(".description").val().trim();
 
@@ -29,6 +30,47 @@ $('#currentDay').text(today.format('MMM D, YYYY'));
       localStorage.setItem("daySchedule", dayScheduleData);
 
 
+
+   /* $("#9AM .description").val(localStorage.getItem("9AM"));
+    $("#10AM .description").val(localStorage.getItem("10AM"));
+    $("#11AM .description").val(localStorage.getItem("11AM"));
+    $("#12PM .description").val(localStorage.getItem("12PM"));
+    $("#1PM .description").val(localStorage.getItem("1PM"));
+    $("#2PM .description").val(localStorage.getItem("2PM"));
+    $("#3PM .description").val(localStorage.getItem("3PM"));
+    $("#4PM .description").val(localStorage.getItem("4PM"));
+    $("#5PM .description").val(localStorage.getItem("5PM"));*/
+
+    //set hours
+    function setHours() {
+        var now = dayjs().hour();
+        //going through each hour
+        $('time-block').each(function() 
+        {
+            //changing current hour in integer
+            var currentTime = parseInt($(this).attr('id'));
+            if(currentTime < now)
+            {
+                $(this).addClass('past');
+                
+                console.log("past");
+            }
+            else if(currentTime === now)
+            {
+                $(this).removeClass('past');
+                $(this).addClass('present');
+                console.log("now"); 
+            }
+            else if(currentTime > now)
+            {
+                $(this).removeClass('past');
+                $(this).removeClass('present');
+                $(this).addClass('future'); 
+                console.log("next");
+            }
+        });
+    }
+    setHours();
 });
 
     // TODO: Add a listener for click events on the save button. This code should
