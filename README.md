@@ -46,4 +46,12 @@ The following animation demonstrates the application functionality:
 10. Added Clear My Schedule button in the header. When clicked it clears data in the local Storage and input text ares and also reloads to homepage.
 11. Finally deployed the application.
 
-    
+## URL
+
+1.The URL of the deployed application:
+
+https://shruthisalimath.github.io/Work-Day-Timetable/
+
+2.The URL of the GitHub repository:
+
+https://github.com/shruthisalimath/Work-Day-Timetable  
