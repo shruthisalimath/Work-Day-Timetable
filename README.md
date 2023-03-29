@@ -23,10 +23,10 @@ THEN the saved events persist
 
 ## Mock Up
 The following animation demonstrates the application functionality:
-[!Work-Day-Scheduler](./assets/images/05-third-party-apis-homework-demo.gif)
+![Work-Day-Scheduler](./assets/images/05-third-party-apis-homework-demo.gif)
 
 ## Screen Shot
-[!Work-Day-TimeTable](./assets/images/Screen-Shot-Work-Day-Scheduler.png)
+![Work-Day-TimeTable](./assets/images/Screen-Shot-Work-Day-Scheduler.png)
 
 ##  Discription of the Challenge: Work-Day-TimeTable
 
